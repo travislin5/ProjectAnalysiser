@@ -1,5 +1,7 @@
 package com.example.ProjectAnalysiser.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,11 +13,14 @@ import com.example.ProjectAnalysiser.tool.DataStructurFactory;
 @RequestMapping("/getdata")
 public class GetDataController {
 	@PostMapping("/json")
-	public String getDataJson(@RequestBody String className) {
+	public List<String> getDataJson(@RequestBody String className) {
 
 		System.out.println(className);
 
-		return DataStructurFactory.eachRootStrucJson("CRUDOrderDetailsController");
+		List<String> rootDataList = DataStructurFactory.allRootStrucJson();
+
+	
+		return rootDataList;
 
 	}
 }
